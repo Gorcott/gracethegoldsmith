@@ -159,12 +159,16 @@ h1 em, h2 em { font-style: italic; color: var(--gold); }
 .btn-ghost:hover .arrow-r { transform: translateX(4px); }
 
 .hero-right {
-  background: var(--cream-dark);
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
+  background: var(--cream-dark);
+}
+.hero-right img.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 .hero-illustration { width: 78%; max-width: 400px; }
 .hero-badge {
@@ -586,52 +590,7 @@ footer {
   </div>
 
   <div class="hero-right">
-    <!-- Decorative ring illustration -->
-    <svg class="hero-illustration" viewBox="0 0 420 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="210" cy="240" r="182" stroke="#B69343" stroke-width="0.5" stroke-dasharray="3 9" opacity="0.25"/>
-      <circle cx="210" cy="240" r="142" stroke="#B69343" stroke-width="0.5" opacity="0.12"/>
-      <!-- Ring band -->
-      <circle cx="210" cy="268" r="92" stroke="#B69343" stroke-width="2.2"/>
-      <circle cx="210" cy="268" r="82" stroke="#D4B97A" stroke-width="0.6" opacity="0.45"/>
-      <!-- Engraving lines -->
-      <path d="M148 248 Q180 240 210 240 Q240 240 272 248" stroke="#D4B97A" stroke-width="0.8" fill="none" opacity="0.5"/>
-      <path d="M148 288 Q180 296 210 296 Q240 296 272 288" stroke="#D4B97A" stroke-width="0.8" fill="none" opacity="0.5"/>
-      <!-- Diamond -->
-      <polygon points="210,116 244,155 210,194 176,155" stroke="#B69343" stroke-width="1.8" fill="none"/>
-      <polygon points="210,128 237,155 210,182 183,155" stroke="#D4B97A" stroke-width="0.7" fill="rgba(182,147,67,0.05)"/>
-      <!-- Gem facets -->
-      <line x1="210" y1="116" x2="210" y2="194" stroke="#B69343" stroke-width="0.5" opacity="0.4"/>
-      <line x1="176" y1="155" x2="244" y2="155" stroke="#B69343" stroke-width="0.5" opacity="0.4"/>
-      <line x1="210" y1="116" x2="183" y2="155" stroke="#D4B97A" stroke-width="0.4" opacity="0.35"/>
-      <line x1="210" y1="116" x2="237" y2="155" stroke="#D4B97A" stroke-width="0.4" opacity="0.35"/>
-      <line x1="210" y1="194" x2="183" y2="155" stroke="#D4B97A" stroke-width="0.4" opacity="0.35"/>
-      <line x1="210" y1="194" x2="237" y2="155" stroke="#D4B97A" stroke-width="0.4" opacity="0.35"/>
-      <!-- Prongs -->
-      <line x1="194" y1="192" x2="186" y2="178" stroke="#B69343" stroke-width="2.2" stroke-linecap="round"/>
-      <line x1="226" y1="192" x2="234" y2="178" stroke="#B69343" stroke-width="2.2" stroke-linecap="round"/>
-      <line x1="210" y1="194" x2="210" y2="180" stroke="#B69343" stroke-width="1.4" stroke-linecap="round"/>
-      <!-- Sparkle -->
-      <g transform="translate(290,112)">
-        <line x1="0" y1="-13" x2="0" y2="13" stroke="#B69343" stroke-width="1.4" stroke-linecap="round"/>
-        <line x1="-13" y1="0" x2="13" y2="0" stroke="#B69343" stroke-width="1.4" stroke-linecap="round"/>
-        <line x1="-8" y1="-8" x2="8" y2="8" stroke="#D4B97A" stroke-width="0.7" stroke-linecap="round" opacity="0.55"/>
-        <line x1="8" y1="-8" x2="-8" y2="8" stroke="#D4B97A" stroke-width="0.7" stroke-linecap="round" opacity="0.55"/>
-      </g>
-      <g transform="translate(126,344)" opacity="0.45">
-        <line x1="0" y1="-7" x2="0" y2="7" stroke="#B69343" stroke-width="1" stroke-linecap="round"/>
-        <line x1="-7" y1="0" x2="7" y2="0" stroke="#B69343" stroke-width="1" stroke-linecap="round"/>
-      </g>
-      <!-- Label -->
-      <text x="210" y="404" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="12" fill="#B69343" letter-spacing="7" opacity="0.65">BIRMINGHAM</text>
-      <line x1="56" y1="402" x2="148" y2="402" stroke="#B69343" stroke-width="0.5" opacity="0.28"/>
-      <line x1="272" y1="402" x2="364" y2="402" stroke="#B69343" stroke-width="0.5" opacity="0.28"/>
-      <text x="210" y="422" text-anchor="middle" font-family="'Jost', sans-serif" font-size="8.5" fill="#B69343" letter-spacing="4" opacity="0.4">HANDCRAFTED JEWELLERY</text>
-    </svg>
-
-    <div class="hero-badge">
-      <span class="hero-badge-num">100%</span>
-      <span class="hero-badge-label">Handcrafted</span>
-    </div>
+    <img src="hero_grace.jpeg" alt="Grace the Goldsmith at work in her Birmingham studio" class="hero-photo">
   </div>
 </section>
 
@@ -733,7 +692,31 @@ footer {
     <p>A bespoke piece passes through many careful stages — all completed by Grace herself. Here is the journey from raw material to finished jewel.</p>
   </div>
   <div class="process-steps">
-    
+    <div class="process-step">
+      <div class="step-circle">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M20 6 C20 6 30 11 30 20 C30 27 25.5 31 20 33 C14.5 31 10 27 10 20 C10 11 20 6 20 6Z"/>
+          <path d="M13 23 Q20 27 27 23"/>
+          <circle cx="26" cy="9" r="3" fill="currentColor" stroke="none" opacity="0.4"/>
+        </svg>
+      </div>
+      <h3>Selection</h3>
+      <p>We begin with the finest materials — ethically sourced gold and rare gemstones — ensuring every piece is as precious as the person it is made for.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M11 26 L20 8 L29 26"/>
+          <path d="M14 21 L26 21"/>
+          <circle cx="20" cy="8" r="2.5"/>
+          <path d="M7 34 L33 34"/>
+          <path d="M5 30 L9 34 M31 34 L35 30"/>
+        </svg>
+      </div>
+      <h3>Crafting</h3>
+      <p>With precision and patience, each creation is hand-finished to reflect our commitment to timeless elegance — a piece you will wear and treasure for a lifetime.</p>
+    </div>
+  </div>
 </section>
 
 <!-- REPURPOSE BANNER -->
