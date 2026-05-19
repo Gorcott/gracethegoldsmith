@@ -790,22 +790,31 @@ footer {
   <div class="contact-form" id="contact-form">
     <p class="section-label">Send a Message</p>
     <h2 class="section-title">Start your<br><em>commission</em></h2>
-    <form action="https://formspree.io/f/mvzyzrkj" method="POST">
-    <input type="hidden" name="_subject" value="New commission enquiry — Grace the Goldsmith">
-    <input type="hidden" name="_next" value="https://gracethegoldsmith.co.uk/#contact-form">
+
+    <!-- Success message (hidden until form submitted) -->
+    <div id="form-success" style="display:none; text-align:center; padding:40px 20px;">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="margin:0 auto 20px; display:block;">
+        <circle cx="24" cy="24" r="22" stroke="#B69343" stroke-width="1.5"/>
+        <path d="M14 24l8 8 12-14" stroke="#B69343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p style="font-family:Cormorant Garamond,serif; font-size:26px; color:#1C1410; margin-bottom:12px;">Thank you</p>
+      <p style="font-size:14px; color:#6B6B6B; line-height:1.8;">Grace will be in touch with you shortly.<br>We look forward to creating something beautiful together.</p>
+    </div>
+
+    <form id="grace-form">
     <div class="form-row">
       <div class="form-group">
         <label>First Name *</label>
-        <input type="text" name="first_name" placeholder="Your first name">
+        <input type="text" name="first_name" placeholder="Your first name" required>
       </div>
       <div class="form-group">
         <label>Last Name *</label>
-        <input type="text" name="last_name" placeholder="Your last name">
+        <input type="text" name="last_name" placeholder="Your last name" required>
       </div>
     </div>
     <div class="form-group">
       <label>Email Address *</label>
-      <input type="email" name="email" placeholder="your@email.com">
+      <input type="email" name="email" placeholder="your@email.com" required>
     </div>
     <div class="form-group">
       <label>Enquiry Type</label>
@@ -819,9 +828,9 @@ footer {
     </div>
     <div class="form-group">
       <label>Message *</label>
-      <textarea rows="5" name="message" placeholder="Tell Grace about your vision, the occasion, any stones or gold you have..."></textarea>
+      <textarea rows="5" name="message" placeholder="Tell Grace about your vision, the occasion, any stones or gold you have..." required></textarea>
     </div>
-    <button class="form-submit" type="submit">Send Message</button>
+    <button class="form-submit" type="submit" id="form-btn">Send Message</button>
     </form>
   </div>
 </section>
@@ -853,6 +862,41 @@ document.querySelectorAll(".nav-close").forEach(link => {
     hamburger.classList.remove("open");
     navLinks.classList.remove("open");
   });
+});
+</script>
+
+<script>
+const form = document.getElementById('grace-form');
+const btn = document.getElementById('form-btn');
+const success = document.getElementById('form-success');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const data = new FormData(form);
+  data.append('_subject', 'New commission enquiry — Grace the Goldsmith');
+
+  try {
+    const res = await fetch('https://formspree.io/f/mvzyzrkj', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    } else {
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+      alert('Something went wrong — please try again or email studio@gracethegoldsmith.co.uk directly.');
+    }
+  } catch(err) {
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+    alert('Something went wrong — please try again or email studio@gracethegoldsmith.co.uk directly.');
+  }
 });
 </script>
 </body>
