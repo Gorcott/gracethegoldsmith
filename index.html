@@ -468,25 +468,44 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 960px) {
-  nav { padding: 14px 20px; }
-  .nav-links { gap: 18px; }
+  /* NAV */
+  nav { padding: 12px 20px; }
+  .nav-logo img { height: 44px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 10px; letter-spacing: 0.12em; }
+  .nav-cta { padding: 8px 14px; }
+
+  /* HERO */
   .hero { grid-template-columns: 1fr; }
-  .hero-left { padding: 64px 24px; }
-  .hero-right { min-height: 340px; }
+  .hero-left { padding: 56px 24px; }
+  .hero-right { min-height: 300px; }
+
+  /* SERVICES */
   .services { padding: 72px 24px; }
   .services-header { grid-template-columns: 1fr; gap: 16px; }
   .services-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-  .philosophy { grid-template-columns: 1fr; }
-  .philosophy-visual { min-height: 300px; }
-  .philosophy-content { padding: 60px 24px; }
+
+  /* PHILOSOPHY - stack vertically */
+  #about { grid-template-columns: 1fr !important; }
+  .philosophy-visual { min-height: 280px; }
+  .philosophy-content { padding: 56px 24px; }
+
+  /* PROCESS */
   .process { padding: 72px 24px; }
   .process-steps { grid-template-columns: 1fr; }
   .process-steps::before { display: none; }
+
+  /* REPURPOSE */
   .repurpose { grid-template-columns: 1fr; padding: 56px 24px; }
-  .contact { grid-template-columns: 1fr; }
-  .contact-info, .contact-form { padding: 60px 24px; }
+
+  /* CONTACT - stack vertically */
+  #contact { grid-template-columns: 1fr !important; }
+  .contact-info, .contact-form { padding: 56px 24px; }
   .form-row { grid-template-columns: 1fr; }
+
+  /* FOOTER */
   footer { padding: 28px 20px; flex-direction: column; text-align: center; }
+  .footer-nav { justify-content: center; flex-wrap: wrap; gap: 16px; }
 }
 </style>
 </head>
