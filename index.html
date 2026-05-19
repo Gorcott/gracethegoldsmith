@@ -281,7 +281,7 @@ h2.section-title {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 60px 50px;
+  padding: 36px 50px;
 }
 .phil-quote blockquote {
   font-family: 'Cormorant Garamond', serif;
@@ -306,7 +306,7 @@ h2.section-title {
 .process-header p { font-size: 15px; color: var(--slate); margin-top: 18px; line-height: 1.8; }
 .process-steps {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(2,1fr);
   gap: 0;
   max-width: 1100px;
   margin: 0 auto;
@@ -494,7 +494,7 @@ footer {
 @media (max-width: 960px) {
   /* NAV */
   nav { padding: 12px 20px; }
-  .nav-logo img { height: 44px; }
+  .nav-logo img { height: 64px; }
   .hamburger { display: flex; }
   .nav-links {
     display: none;
@@ -525,7 +525,7 @@ footer {
 
   /* PHILOSOPHY - stack vertically */
   #about { grid-template-columns: 1fr !important; }
-  .philosophy-visual { min-height: 280px; }
+  .philosophy-visual { min-height: 220px; }
   .philosophy-content { padding: 56px 24px; }
 
   /* PROCESS */
@@ -562,7 +562,7 @@ footer {
     <li><a href="#services" class="nav-close">Services</a></li>
     <li><a href="#about" class="nav-close">About</a></li>
     <li><a href="#process" class="nav-close">The Craft</a></li>
-    <li><a href="#contact" class="nav-cta nav-close">Get in Touch</a></li>
+    <li><a href="#contact-form" class="nav-cta nav-close">Get in Touch</a></li>
   </ul>
 </nav>
 
@@ -574,10 +574,10 @@ footer {
       Jewellery<br>crafted with<br><em>soul &amp; skill</em>
     </h1>
     <p class="hero-desc fade-up d2">
-      Bespoke creations, thoughtful restorations, and the art of giving old gold a beautiful new story. Every piece is shaped by hand in our Birmingham studio — made entirely for you.
+      Bespoke creations, thoughtful restorations, and the art of giving old gold a beautiful new story. Every piece is shaped by hand in our Birmingham studio. Made entirely for you from the city famous the world over for its Jewellery Quarter.
     </p>
     <div class="hero-actions fade-up d3">
-      <a href="#contact" class="btn-primary">Commission a Piece</a>
+      <a href="#contact-form" class="btn-primary">Commission a Piece</a>
       <a href="#services" class="btn-ghost">
         Our Services
         <svg class="arrow-r" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -640,7 +640,7 @@ footer {
   <div class="services-header">
     <div>
       <p class="section-label">What We Do</p>
-      <h2 class="section-title">Grace's goldsmith<br><em>services</em></h2>
+      <h2 class="section-title">Grace the Goldsmith<br><em>services</em></h2>
     </div>
     <p class="services-intro">Every piece begins with a conversation. Whether you arrive with a clear vision, a rough sketch, or a handful of inherited gold, Grace will guide you from first idea to finished jewel.</p>
   </div>
@@ -717,9 +717,9 @@ footer {
     <h2 class="section-title">The art of<br><em>the goldsmith</em></h2>
     <p class="phil-body">We combine ancient goldsmithing techniques with a considered, contemporary aesthetic to create pieces as unique as the individuals who wear them. Every commission is meticulously handcrafted in our Birmingham studio, reflecting a commitment to excellence and artisanal integrity.</p>
     <div class="detail-list">
-      <div class="detail-item"><span class="dot"></span>Ethically sourced gold and gemstones</div>
+      <div class="detail-item"><span class="dot"></span>The finest precious metals and both natural and laboratory grown gemstones</div>
       <div class="detail-item"><span class="dot"></span>Every piece made entirely by hand</div>
-      <div class="detail-item"><span class="dot"></span>Ancient techniques, modern sensibility</div>
+      <div class="detail-item"><span class="dot"></span>Seamlessly mixing modern tech with traditional craft</div>
       <div class="detail-item"><span class="dot"></span>Birmingham Assay Office hallmarked</div>
     </div>
   </div>
@@ -733,43 +733,7 @@ footer {
     <p>A bespoke piece passes through many careful stages — all completed by Grace herself. Here is the journey from raw material to finished jewel.</p>
   </div>
   <div class="process-steps">
-    <div class="process-step">
-      <div class="step-circle">
-        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-          <path d="M20 6 C20 6 30 11 30 20 C30 27 25.5 31 20 33 C14.5 31 10 27 10 20 C10 11 20 6 20 6Z"/>
-          <path d="M13 23 Q20 27 27 23"/>
-          <circle cx="26" cy="9" r="3" fill="currentColor" stroke="none" opacity="0.4"/>
-        </svg>
-      </div>
-      <h3>Selection</h3>
-      <p>We begin with the finest materials — ethically sourced gold and rare gemstones — ensuring every piece is as precious as the person it is made for.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-circle">
-        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-          <path d="M20 5 C20 5 29 10 29 19 C29 25 25 29 20 31 C15 29 11 25 11 19 C11 10 20 5 20 5Z"/>
-          <path d="M14 18 Q20 22 26 18"/>
-          <path d="M15 12 Q20 16 25 12"/>
-          <path d="M9 34 Q20 40 31 34"/>
-        </svg>
-      </div>
-      <h3>Melting</h3>
-      <p>Ancient fire is used to purify and melt gold, creating a fluid state that allows for the most intricate and expressive forms imaginable.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-circle">
-        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-          <path d="M11 26 L20 8 L29 26"/>
-          <path d="M14 21 L26 21"/>
-          <circle cx="20" cy="8" r="2.5"/>
-          <path d="M7 34 L33 34"/>
-          <path d="M5 30 L9 34 M31 34 L35 30"/>
-        </svg>
-      </div>
-      <h3>Crafting</h3>
-      <p>With precision and patience, each creation is hand-finished to reflect our commitment to timeless elegance — a piece you will wear and treasure for a lifetime.</p>
-    </div>
-  </div>
+    
 </section>
 
 <!-- REPURPOSE BANNER -->
@@ -778,7 +742,7 @@ footer {
     <h2>Have old gold or stones<br>looking for a new life?</h2>
     <p>Inherited jewellery, unworn pieces, sentimental stones — Grace specialises in repurposing precious materials into something you will love and wear every day, while honouring where they came from.</p>
   </div>
-  <a href="#contact" class="btn-outline-white">Talk to Grace</a>
+  <a href="#contact-form" class="btn-outline-white">Talk to Grace</a>
 </div>
 
 <!-- CONTACT -->
@@ -823,26 +787,29 @@ footer {
     </div>
   </div>
 
-  <div class="contact-form">
+  <div class="contact-form" id="contact-form">
     <p class="section-label">Send a Message</p>
     <h2 class="section-title">Start your<br><em>commission</em></h2>
+    <form action="https://formspree.io/f/mvzyzrkj" method="POST">
+    <input type="hidden" name="_subject" value="New commission enquiry — Grace the Goldsmith">
+    <input type="hidden" name="_next" value="https://gracethegoldsmith.co.uk/#contact-form">
     <div class="form-row">
       <div class="form-group">
         <label>First Name *</label>
-        <input type="text" placeholder="Your first name">
+        <input type="text" name="first_name" placeholder="Your first name">
       </div>
       <div class="form-group">
         <label>Last Name *</label>
-        <input type="text" placeholder="Your last name">
+        <input type="text" name="last_name" placeholder="Your last name">
       </div>
     </div>
     <div class="form-group">
       <label>Email Address *</label>
-      <input type="email" placeholder="your@email.com">
+      <input type="email" name="email" placeholder="your@email.com">
     </div>
     <div class="form-group">
       <label>Enquiry Type</label>
-      <select>
+      <select name="enquiry_type">
         <option value="">Select a service...</option>
         <option>Bespoke Commission</option>
         <option>Repurposing Old Jewellery</option>
@@ -852,9 +819,10 @@ footer {
     </div>
     <div class="form-group">
       <label>Message *</label>
-      <textarea rows="5" placeholder="Tell Grace about your vision, the occasion, any stones or gold you have..."></textarea>
+      <textarea rows="5" name="message" placeholder="Tell Grace about your vision, the occasion, any stones or gold you have..."></textarea>
     </div>
-    <button class="form-submit">Send Message</button>
+    <button class="form-submit" type="submit">Send Message</button>
+    </form>
   </div>
 </section>
 
