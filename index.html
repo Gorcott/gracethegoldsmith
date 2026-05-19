@@ -466,14 +466,52 @@ footer {
 .fade-up { opacity: 0; animation: fadeUp 0.9s ease forwards; }
 .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.25s; } .d3 { animation-delay: 0.4s; } .d4 { animation-delay: 0.55s; }
 
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+  z-index: 200;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: all 0.3s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
 /* RESPONSIVE */
 @media (max-width: 960px) {
   /* NAV */
   nav { padding: 12px 20px; }
   .nav-logo img { height: 44px; }
-  .nav-links { gap: 14px; }
-  .nav-links a { font-size: 10px; letter-spacing: 0.12em; }
-  .nav-cta { padding: 8px 14px; }
+  .hamburger { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: rgba(247,242,232,0.98);
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 20px 32px;
+    gap: 24px;
+    border-bottom: 1px solid var(--gold-pale);
+    backdrop-filter: blur(10px);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.18em; }
+  .nav-cta { padding: 12px 32px; }
 
   /* HERO */
   .hero { grid-template-columns: 1fr; }
@@ -517,11 +555,14 @@ footer {
   <a href="#" class="nav-logo">
     <img src="logo.png" alt="Grace The Goldsmith">
   </a>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#process">The Craft</a></li>
-    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#services" class="nav-close">Services</a></li>
+    <li><a href="#about" class="nav-close">About</a></li>
+    <li><a href="#process" class="nav-close">The Craft</a></li>
+    <li><a href="#contact" class="nav-cta nav-close">Get in Touch</a></li>
   </ul>
 </nav>
 
@@ -831,5 +872,20 @@ footer {
   <p class="footer-copy">© 2026 Grace Hunter &nbsp;·&nbsp; gracethegoldsmith.co.uk &nbsp;·&nbsp; Birmingham, UK</p>
 </footer>
 
+
+<script>
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("open");
+  navLinks.classList.toggle("open");
+});
+document.querySelectorAll(".nav-close").forEach(link => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("open");
+    navLinks.classList.remove("open");
+  });
+});
+</script>
 </body>
 </html>
