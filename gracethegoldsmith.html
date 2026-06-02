@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grace The Goldsmith — Handcrafted Jewellery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #B69343;
+  --gold-light: #D4B97A;
+  --gold-pale: #EFE3C2;
+  --gold-verylight: #FAF4E6;
+  --ink: #1C1410;
+  --ink-mid: #3A2E22;
+  --slate: #6B6B6B;
+  --cream: #F7F2E8;
+  --cream-dark: #EDE4D0;
+  --white: #FDFAF4;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ANNOUNCEMENT */
+.announcement {
+  background: var(--gold);
+  color: var(--white);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(247,242,232,0.97);
+  border-bottom: 1px solid var(--gold-pale);
+  padding: 16px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+}
+.nav-logo img { height: 70px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+.nav-links a {
+  text-decoration: none;
+  color: var(--ink-mid);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 400;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  border: 1px solid var(--gold) !important;
+  padding: 10px 24px;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--gold); color: var(--white) !important; }
+
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 80px 70px 80px 80px;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--gold); flex-shrink: 0; }
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(50px, 5.5vw, 78px);
+  font-weight: 300;
+  line-height: 1.07;
+  color: var(--ink);
+  margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+h1 em, h2 em { font-style: italic; color: var(--gold); }
+.hero-desc {
+  font-size: 15px;
+  color: var(--slate);
+  max-width: 420px;
+  line-height: 1.85;
+  margin-bottom: 44px;
+}
+.hero-actions { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--white);
+  text-decoration: none;
+  padding: 15px 38px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  transition: background 0.3s;
+}
+.btn-primary:hover { background: var(--ink); }
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-mid);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 400;
+  transition: color 0.3s;
+}
+.btn-ghost:hover { color: var(--gold); }
+.arrow-r { transition: transform 0.3s; }
+.btn-ghost:hover .arrow-r { transform: translateX(4px); }
+
+.hero-right {
+  position: relative;
+  overflow: hidden;
+  background: var(--cream-dark);
+}
+.hero-right img.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.hero-illustration { width: 78%; max-width: 400px; }
+.hero-badge {
+  position: absolute;
+  bottom: 52px;
+  left: -24px;
+  background: var(--white);
+  border: 1px solid var(--gold-pale);
+  padding: 18px 26px;
+  text-align: center;
+  box-shadow: 0 6px 36px rgba(182,147,67,0.13);
+}
+.hero-badge-num {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  color: var(--gold);
+  font-weight: 400;
+  line-height: 1;
+}
+.hero-badge-label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-top: 4px;
+}
+
+/* SECTION COMMON */
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.section-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); flex-shrink: 0; }
+.section-label.centered { justify-content: center; }
+.section-label.centered::before { display: none; }
+h2.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 3.8vw, 50px);
+  font-weight: 300;
+  line-height: 1.14;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+/* SERVICES */
+.services { background: var(--white); padding: 100px 80px; }
+.services-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: end;
+  margin-bottom: 64px;
+}
+.services-intro { font-size: 15px; color: var(--slate); line-height: 1.85; }
+.services-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+.service-card {
+  background: var(--cream);
+  padding: 44px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.35s;
+}
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.35s;
+}
+.service-card:hover { background: var(--gold-verylight); }
+.service-card:hover::after { transform: scaleX(1); }
+.svc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  display: block;
+}
+.svc-icon { width: 44px; height: 44px; color: var(--gold); margin-bottom: 20px; }
+.service-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.service-card p { font-size: 13px; color: var(--slate); line-height: 1.8; }
+
+/* PHILOSOPHY */
+.philosophy { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
+.philosophy-visual {
+  background: var(--ink);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.phil-ornament { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0.12; }
+.phil-quote {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 36px 50px;
+}
+.phil-quote blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 2.6vw, 34px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--gold-light);
+  margin-bottom: 24px;
+}
+.phil-quote cite { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(247,242,232,0.5); font-style: normal; }
+.philosophy-content { background: var(--cream-dark); padding: 80px 72px; display: flex; flex-direction: column; justify-content: center; }
+.philosophy-content .section-title { margin-bottom: 0; }
+.phil-body { font-size: 15px; color: var(--slate); line-height: 1.9; margin: 24px 0 36px; }
+.detail-list { display: flex; flex-direction: column; gap: 14px; }
+.detail-item { display: flex; align-items: flex-start; gap: 14px; font-size: 13px; color: var(--ink-mid); letter-spacing: 0.03em; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 7px; }
+
+/* PROCESS */
+.process { background: var(--white); padding: 100px 80px; text-align: center; }
+.process-header { max-width: 580px; margin: 0 auto 68px; }
+.process-header p { font-size: 15px; color: var(--slate); margin-top: 18px; line-height: 1.8; }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: calc(16.6% + 36px);
+  right: calc(16.6% + 36px);
+  height: 1px;
+  background: var(--gold-pale);
+}
+.process-step { padding: 0 36px 40px; position: relative; z-index: 1; }
+.step-circle {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 28px;
+}
+.step-circle svg { width: 38px; height: 38px; color: var(--gold); }
+.process-step h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 400;
+  color: var(--ink); margin-bottom: 14px;
+}
+.process-step p { font-size: 13px; color: var(--slate); line-height: 1.8; max-width: 280px; margin: 0 auto; }
+
+/* REPURPOSE BANNER */
+.repurpose {
+  background: var(--gold);
+  padding: 80px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 60px;
+}
+.repurpose h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 46px);
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.repurpose p { font-size: 15px; color: rgba(255,255,255,0.8); max-width: 600px; line-height: 1.8; }
+.btn-outline-white {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--white);
+  color: var(--white);
+  text-decoration: none;
+  padding: 15px 38px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+.btn-outline-white:hover { background: var(--white); color: var(--gold); }
+
+/* CONTACT */
+.contact { display: grid; grid-template-columns: 1fr 1fr; }
+.contact-info { background: var(--ink); padding: 80px 72px; }
+.contact-info .section-label { color: var(--gold-light); }
+.contact-info .section-label::before { background: var(--gold-light); }
+.contact-info .section-title { color: var(--white); margin-bottom: 24px; }
+.contact-info > p { font-size: 14px; color: rgba(247,242,232,0.6); line-height: 1.9; margin-bottom: 44px; }
+.contact-details { display: flex; flex-direction: column; gap: 18px; margin-bottom: 44px; }
+.c-detail { display: flex; align-items: flex-start; gap: 14px; }
+.c-icon {
+  width: 34px; height: 34px;
+  border: 1px solid rgba(182,147,67,0.3);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+.c-text { font-size: 13px; color: rgba(247,242,232,0.7); line-height: 1.6; }
+.c-text strong { display: block; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); font-weight: 400; margin-bottom: 3px; }
+.socials { display: flex; gap: 10px; }
+.social-btn {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(182,147,67,0.3);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold-light);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.social-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--white); }
+.contact-form { background: var(--cream-dark); padding: 80px 72px; }
+.contact-form .section-title { margin-bottom: 36px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+.form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+.form-group label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate); font-weight: 400; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--white);
+  border: 1px solid var(--gold-pale);
+  padding: 13px 16px;
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.3s;
+  resize: vertical;
+  appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold); }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: #c0b8ac; }
+.form-submit {
+  width: 100%;
+  background: var(--gold);
+  color: var(--white);
+  border: none;
+  padding: 17px 40px;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.form-submit:hover { background: var(--ink); }
+
+/* FOOTER */
+footer {
+  background: var(--ink-mid);
+  padding: 36px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-logo img { height: 56px; filter: brightness(10); opacity: 0.6; }
+.footer-nav { display: flex; gap: 28px; list-style: none; }
+.footer-nav a { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,242,232,0.45); text-decoration: none; transition: color 0.3s; }
+.footer-nav a:hover { color: var(--gold-light); }
+.footer-copy { font-size: 10px; color: rgba(247,242,232,0.35); letter-spacing: 0.08em; }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { opacity: 0; animation: fadeUp 0.9s ease forwards; }
+.d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.25s; } .d3 { animation-delay: 0.4s; } .d4 { animation-delay: 0.55s; }
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+  z-index: 200;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: all 0.3s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  /* NAV */
+  nav { padding: 12px 20px; }
+  .nav-logo img { height: 64px; }
+  .hamburger { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: rgba(247,242,232,0.98);
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 20px 32px;
+    gap: 24px;
+    border-bottom: 1px solid var(--gold-pale);
+    backdrop-filter: blur(10px);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.18em; }
+  .nav-cta { padding: 12px 32px; }
+
+  /* HERO */
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 56px 24px; }
+  .hero-right { min-height: 300px; }
+
+  /* SERVICES */
+  .services { padding: 72px 24px; }
+  .services-header { grid-template-columns: 1fr; gap: 16px; }
+  .services-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+
+  /* PHILOSOPHY - stack vertically */
+  #about { grid-template-columns: 1fr !important; }
+  .philosophy-visual { min-height: 220px; }
+  .philosophy-content { padding: 56px 24px; }
+
+  /* PROCESS */
+  .process { padding: 72px 24px; }
+  .process-steps { grid-template-columns: 1fr; }
+  .process-steps::before { display: none; }
+
+  /* REPURPOSE */
+  .repurpose { grid-template-columns: 1fr; padding: 56px 24px; }
+
+  /* CONTACT - stack vertically */
+  #contact { grid-template-columns: 1fr !important; }
+  .contact-info, .contact-form { padding: 56px 24px; }
+  .form-row { grid-template-columns: 1fr; }
+
+  /* FOOTER */
+  footer { padding: 28px 20px; flex-direction: column; text-align: center; }
+  .footer-nav { justify-content: center; flex-wrap: wrap; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="announcement">Now accepting commissions &nbsp;·&nbsp; Birmingham Studio &nbsp;·&nbsp; Handcrafted jewellery to order</div>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo.png" alt="Grace The Goldsmith">
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#services" class="nav-close">Services</a></li>
+    <li><a href="#about" class="nav-close">About</a></li>
+    <li><a href="#process" class="nav-close">The Craft</a></li>
+    <li><a href="#contact-form" class="nav-cta nav-close">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="eyebrow fade-up">Grace Hunter · Birmingham Studio</p>
+    <h1 class="fade-up d1">
+      Jewellery<br>crafted with<br><em>soul &amp; skill</em>
+    </h1>
+    <p class="hero-desc fade-up d2">
+      Bespoke creations, thoughtful restorations, and the art of giving old gold a beautiful new story. Every piece is shaped by hand in our Birmingham studio. Made entirely for you from the city famous the world over for its Jewellery Quarter.<br><br><em>Please note we can only accept commissions from the UK.</em>
+    </p>
+    <div class="hero-actions fade-up d3">
+      <a href="#contact-form" class="btn-primary">Commission a Piece</a>
+      <a href="#services" class="btn-ghost">
+        Our Services
+        <svg class="arrow-r" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img src="hero_grace.jpeg" alt="Grace the Goldsmith at work in her Birmingham studio" class="hero-photo">
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="services-header">
+    <div>
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Grace the Goldsmith<br><em>services</em></h2>
+    </div>
+    <p class="services-intro">Every piece begins with a conversation. Whether you arrive with a clear vision, a rough sketch, or a handful of inherited gold, Grace will guide you from first idea to finished jewel.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="svc-num">01</span>
+      <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M22 6 L36 20 L22 40 L8 20 Z"/>
+        <path d="M8 20 L22 25 L36 20"/>
+        <path d="M22 6 L22 25"/>
+        <circle cx="22" cy="6" r="2.5" fill="currentColor" stroke="none"/>
+      </svg>
+      <h3>Bespoke Design</h3>
+      <p>Your vision, realised from scratch. Engagement rings, pendants, earrings — each piece is designed and crafted entirely for you, with no two ever the same.</p>
+    </div>
+    <div class="service-card">
+      <span class="svc-num">02</span>
+      <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="22" cy="22" r="13"/>
+        <circle cx="22" cy="22" r="5.5"/>
+        <path d="M22 4V10 M22 34V40 M4 22H10 M34 22H40"/>
+        <path d="M9.5 9.5L14 14 M30 30L34.5 34.5 M9.5 34.5L14 30 M30 14L34.5 9.5"/>
+      </svg>
+      <h3>Manufacturing</h3>
+      <p>From casting and forging to hand-setting stones, every stage of manufacture is completed by Grace in her Birmingham studio to the highest artisanal standard.</p>
+    </div>
+    <div class="service-card">
+      <span class="svc-num">03</span>
+      <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M7 34 C7 34 11 26 20 26 C29 26 29 34 38 34"/>
+        <path d="M15 18 L29 18 L26 11 L18 11 Z"/>
+        <path d="M18 11 L18 7 M26 11 L26 7"/>
+        <circle cx="22" cy="5" r="3"/>
+      </svg>
+      <h3>Repurposing</h3>
+      <p>Give old gold and precious stones a new life. Inherited or unworn jewellery is transformed into contemporary pieces that carry forward their history and meaning.</p>
+    </div>
+    <div class="service-card">
+      <span class="svc-num">04</span>
+      <svg class="svc-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M13 32 L7 38 M31 13 L37 7"/>
+        <path d="M18 13 L31 26 C33 28 33 32 31 34 C29 36 25 36 23 34 L10 21 C8 19 8 15 10 13 C12 11 16 11 18 13Z"/>
+        <path d="M24 9 L36 21"/>
+        <circle cx="36" cy="9" r="2.5" fill="currentColor" stroke="none"/>
+      </svg>
+      <h3>Repair &amp; Restoration</h3>
+      <p>Broken clasps, worn settings, damaged bands — Grace restores treasured pieces with the same care and precision she brings to creating new ones.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="about" style="padding:0; display:grid; grid-template-columns:1fr 1fr; min-height:560px;">
+  <div class="philosophy-visual">
+    <div class="phil-ornament">
+      <svg width="460" height="460" viewBox="0 0 460 460" fill="none">
+        <circle cx="230" cy="230" r="200" stroke="#B69343" stroke-width="1"/>
+        <circle cx="230" cy="230" r="150" stroke="#B69343" stroke-width="0.6"/>
+        <circle cx="230" cy="230" r="100" stroke="#B69343" stroke-width="0.4"/>
+        <line x1="230" y1="30" x2="230" y2="430" stroke="#B69343" stroke-width="0.5"/>
+        <line x1="30" y1="230" x2="430" y2="230" stroke="#B69343" stroke-width="0.5"/>
+        <line x1="89" y1="89" x2="371" y2="371" stroke="#B69343" stroke-width="0.3"/>
+        <line x1="371" y1="89" x2="89" y2="371" stroke="#B69343" stroke-width="0.3"/>
+        <polygon points="230,90 270,165 350,165 295,215 318,295 230,242 142,295 165,215 110,165 190,165" stroke="#B69343" stroke-width="0.8" fill="none"/>
+      </svg>
+    </div>
+    <div class="phil-quote">
+      <blockquote>"Jewellery is more than adornment — it is a silent story of identity and heritage."</blockquote>
+      <cite>Grace Hunter · Goldsmith</cite>
+    </div>
+  </div>
+  <div class="philosophy-content">
+    <p class="section-label">Our Philosophy</p>
+    <h2 class="section-title">The art of<br><em>the goldsmith</em></h2>
+    <p class="phil-body">We combine ancient goldsmithing techniques with a considered, contemporary aesthetic to create pieces as unique as the individuals who wear them. Every commission is meticulously handcrafted in our Birmingham studio, reflecting a commitment to excellence and artisanal integrity.</p>
+    <div class="detail-list">
+      <div class="detail-item"><span class="dot"></span>The finest precious metals and both natural and laboratory grown gemstones</div>
+      <div class="detail-item"><span class="dot"></span>Every piece made entirely by hand</div>
+      <div class="detail-item"><span class="dot"></span>Seamlessly mixing modern tech with traditional craft</div>
+      <div class="detail-item"><span class="dot"></span>Birmingham Assay Office hallmarked</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="process">
+  <div class="process-header">
+    <p class="section-label centered">The Craft</p>
+    <h2 class="section-title">A glimpse into<br><em>the making</em></h2>
+    <p>A bespoke piece passes through many careful stages — all completed by Grace herself. Here is the journey from raw material to finished jewel.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-circle">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M20 6 C20 6 30 11 30 20 C30 27 25.5 31 20 33 C14.5 31 10 27 10 20 C10 11 20 6 20 6Z"/>
+          <path d="M13 23 Q20 27 27 23"/>
+          <circle cx="26" cy="9" r="3" fill="currentColor" stroke="none" opacity="0.4"/>
+        </svg>
+      </div>
+      <h3>Selection</h3>
+      <p>We begin with the finest materials — ethically sourced gold and rare gemstones — ensuring every piece is as precious as the person it is made for.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M11 26 L20 8 L29 26"/>
+          <path d="M14 21 L26 21"/>
+          <circle cx="20" cy="8" r="2.5"/>
+          <path d="M7 34 L33 34"/>
+          <path d="M5 30 L9 34 M31 34 L35 30"/>
+        </svg>
+      </div>
+      <h3>Crafting</h3>
+      <p>With precision and patience, each creation is hand-finished to reflect our commitment to timeless elegance — a piece you will wear and treasure for a lifetime.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M8 28 L8 18 L20 12 L32 18 L32 28 L20 34 Z"/>
+          <path d="M8 18 L20 24 L32 18"/>
+          <path d="M20 24 L20 34"/>
+          <path d="M26 9 L30 6 M30 6 L30 11 M30 6 L35 6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Delivery</h3>
+      <p>Your finished piece arrives beautifully presented and sized to perfection. Grace sizes every commission with care — and if anything isn't quite right, we will make it so. We are not happy until you are.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REPURPOSE BANNER -->
+<div class="repurpose">
+  <div>
+    <h2>Have old gold or stones<br>looking for a new life?</h2>
+    <p>Inherited jewellery, unworn pieces, sentimental stones — Grace specialises in repurposing precious materials into something you will love and wear every day, while honouring where they came from.</p>
+  </div>
+  <a href="#contact-form" class="btn-outline-white">Talk to Grace</a>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:0; display:grid; grid-template-columns:1fr 1fr;">
+  <div class="contact-info">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Let's create<br><em>something beautiful</em></h2>
+    <p>Whether you have a specific vision for a bespoke commission or simply wish to discuss the art of goldsmithing, Grace is here to listen. Every great piece begins with a conversation.</p>
+    <div class="contact-details">
+      <div class="c-detail">
+        <div class="c-icon">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 1C5.24 1 3 3.24 3 6C3 10 8 15 8 15C8 15 13 10 13 6C13 3.24 10.76 1 8 1Z"/><circle cx="8" cy="6" r="2"/></svg>
+        </div>
+        <div class="c-text"><strong>Studio</strong>Birmingham, United Kingdom</div>
+      </div>
+      <div class="c-detail">
+        <div class="c-icon">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M2 5l6 4 6-4"/></svg>
+        </div>
+        <div class="c-text"><strong>Email</strong>studio@gracethegoldsmith.co.uk</div>
+      </div>
+      <div class="c-detail">
+        <div class="c-icon">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M8 4v4l3 2"/></svg>
+        </div>
+        <div class="c-text"><strong>Commissions</strong>Currently accepting new commissions</div>
+      </div>
+    </div>
+    <div class="socials">
+      <a href="https://www.instagram.com/grace_thegoldsmith" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-form" id="contact-form">
+    <p class="section-label">Send a Message</p>
+    <h2 class="section-title">Start your<br><em>commission</em></h2>
+
+    <!-- Success message (hidden until form submitted) -->
+    <div id="form-success" style="display:none; text-align:center; padding:40px 20px;">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="margin:0 auto 20px; display:block;">
+        <circle cx="24" cy="24" r="22" stroke="#B69343" stroke-width="1.5"/>
+        <path d="M14 24l8 8 12-14" stroke="#B69343" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p style="font-family:Cormorant Garamond,serif; font-size:26px; color:#1C1410; margin-bottom:12px;">Thank you</p>
+      <p style="font-size:14px; color:#6B6B6B; line-height:1.8;">Grace will be in touch with you shortly.<br>We look forward to creating something beautiful together.</p>
+    </div>
+
+    <form id="grace-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name *</label>
+        <input type="text" name="first_name" placeholder="Your first name" required>
+      </div>
+      <div class="form-group">
+        <label>Last Name *</label>
+        <input type="text" name="last_name" placeholder="Your last name" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email Address *</label>
+      <input type="email" name="email" placeholder="your@email.com" required>
+    </div>
+    <div class="form-group">
+      <label>Enquiry Type</label>
+      <select name="enquiry_type">
+        <option value="">Select a service...</option>
+        <option>Bespoke Commission</option>
+        <option>Repurposing Old Jewellery</option>
+        <option>Repair &amp; Restoration</option>
+        <option>General Enquiry</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Message *</label>
+      <textarea rows="5" name="message" placeholder="Tell Grace about your vision, the occasion, any stones or gold you have..." required></textarea>
+    </div>
+    <button class="form-submit" type="submit" id="form-btn">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="logo.png" alt="Grace The Goldsmith">
+  </div>
+  <ul class="footer-nav">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">The Craft</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Grace Hunter &nbsp;·&nbsp; gracethegoldsmith.co.uk &nbsp;·&nbsp; Birmingham, UK</p>
+</footer>
+
+
+<script>
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("open");
+  navLinks.classList.toggle("open");
+});
+document.querySelectorAll(".nav-close").forEach(link => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("open");
+    navLinks.classList.remove("open");
+  });
+});
+</script>
+
+<script>
+const form = document.getElementById('grace-form');
+const btn = document.getElementById('form-btn');
+const success = document.getElementById('form-success');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const data = new FormData(form);
+  data.append('_subject', 'New commission enquiry — Grace the Goldsmith');
+
+  try {
+    const res = await fetch('https://formspree.io/f/mvzyzrkj', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    } else {
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+      alert('Something went wrong — please try again or email studio@gracethegoldsmith.co.uk directly.');
+    }
+  } catch(err) {
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+    alert('Something went wrong — please try again or email studio@gracethegoldsmith.co.uk directly.');
+  }
+});
+</script>
+</body>
+</html>
